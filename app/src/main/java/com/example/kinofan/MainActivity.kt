@@ -2,17 +2,38 @@ package com.example.kinofan
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.kinofan.ui.main.MainFragment
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.example.kinofan.databinding.MainActivityBinding
+import com.example.kinofan.ui.main.FilmsFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: MainActivityBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
-                .commitNow()
-        }
+        binding = MainActivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val navView: BottomNavigationView = binding.navView
+
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+
+        //todo Когда буду менять appBar
+//        val appBarConfiguration = AppBarConfiguration(
+//            setOf(
+//                R.id.navigation_films, R.id.navigation_favorites, R.id.navigation_ratings
+//            )
+//        )
+//        setupActionBarWithNavController(navController, appBarConfiguration)
+
+        navView.setupWithNavController(navController)
+
+
     }
 }

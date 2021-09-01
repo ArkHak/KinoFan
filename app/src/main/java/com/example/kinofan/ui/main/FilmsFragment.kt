@@ -8,24 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.kinofan.R
 
-class MainFragment : Fragment() {
+class FilmsFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = FilmsFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: FilmsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+        return inflater.inflate(R.layout.films_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(FilmsViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

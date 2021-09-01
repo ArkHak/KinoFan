@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_films">
+
+    <fragment
+        android:id="@+id/navigation_films"
+        android:name="com.example.kinofan.ui.main.FilmsFragment"
+        android:label="Films"
+        tools:layout="@layout/films_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_favorites"
+        android:name="com.example.kinofan.ui.favorite.FavoriteFragment"
+        android:label="Favorites"
+        tools:layout="@layout/favorite_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_ratings"
+        android:name="com.example.kinofan.ui.ratings.RatingsFragment"
+        android:label="Ratings"
+        tools:layout="@layout/ratings_fragment" />
+</navigation>
