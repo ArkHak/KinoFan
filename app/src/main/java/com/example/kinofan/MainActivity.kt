@@ -3,11 +3,8 @@ package com.example.kinofan
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.kinofan.databinding.MainActivityBinding
-import com.example.kinofan.ui.main.FilmsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 

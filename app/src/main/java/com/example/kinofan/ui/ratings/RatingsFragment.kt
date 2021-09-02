@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.kinofan.R
+import com.example.kinofan.databinding.FilmsFragmentBinding
+import com.example.kinofan.databinding.RatingsFragmentBinding
 
 class RatingsFragment : Fragment() {
 
@@ -14,19 +16,29 @@ class RatingsFragment : Fragment() {
         fun newInstance() = RatingsFragment()
     }
 
+    private var _binding: RatingsFragmentBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var viewModel: RatingsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.ratings_fragment, container, false)
+        val view = inflater.inflate(R.layout.ratings_fragment, container, false)
+        _binding = RatingsFragmentBinding.bind(view)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(RatingsViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

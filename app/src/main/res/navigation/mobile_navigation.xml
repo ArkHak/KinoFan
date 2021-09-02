@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_films"
-        android:name="com.example.kinofan.ui.main.FilmsFragment"
+        android:name="com.example.kinofan.ui.films.FilmsFragment"
         android:label="Films"
         tools:layout="@layout/films_fragment" />
 
