@@ -1,4 +1,4 @@
-package com.example.kinofan.ui.ratings
+package com.example.kinofan.ui.viewModel
 
 import androidx.lifecycle.ViewModel
 

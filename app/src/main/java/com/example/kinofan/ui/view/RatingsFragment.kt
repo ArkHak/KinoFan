@@ -1,4 +1,4 @@
-package com.example.kinofan.ui.ratings
+package com.example.kinofan.ui.view
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.kinofan.R
-import com.example.kinofan.databinding.FilmsFragmentBinding
 import com.example.kinofan.databinding.RatingsFragmentBinding
+import com.example.kinofan.ui.viewModel.RatingsViewModel
 
 class RatingsFragment : Fragment() {
 

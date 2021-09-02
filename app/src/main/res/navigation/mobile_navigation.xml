@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_films"
-        android:name="com.example.kinofan.ui.films.FilmsFragment"
+        android:name="com.example.kinofan.ui.view.FilmsFragment"
         android:label="Films"
         tools:layout="@layout/films_fragment" />
 
     <fragment
         android:id="@+id/navigation_favorites"
-        android:name="com.example.kinofan.ui.favorite.FavoriteFragment"
+        android:name="com.example.kinofan.ui.view.FavoriteFragment"
         android:label="Favorites"
         tools:layout="@layout/favorite_fragment" />
 
     <fragment
         android:id="@+id/navigation_ratings"
-        android:name="com.example.kinofan.ui.ratings.RatingsFragment"
+        android:name="com.example.kinofan.ui.view.RatingsFragment"
         android:label="Ratings"
         tools:layout="@layout/ratings_fragment" />
 </navigation>
