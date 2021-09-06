@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.kinofan.CommingSoonFilmsFragment
 import com.example.kinofan.R
 import com.example.kinofan.databinding.FilmsFragmentBinding
 import com.example.kinofan.ui.viewModel.FilmsViewModel
@@ -16,7 +17,14 @@ import com.google.android.material.snackbar.Snackbar
 class FilmsFragment : Fragment() {
 
     companion object {
-        fun newInstance() = FilmsFragment()
+        private const val ARG_COUNT = "param2"
+        fun newInstance(counter: Int?): FilmsFragment {
+            val fragment = FilmsFragment()
+            val args = Bundle()
+            args.putInt(ARG_COUNT, counter!!)
+            fragment.arguments = args
+            return fragment
+        }
     }
 
     private lateinit var viewModel: FilmsViewModel
