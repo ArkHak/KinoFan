@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.kinofan.CommingSoonFilmsFragment
 import com.example.kinofan.R
 import com.example.kinofan.databinding.FilmsFragmentBinding
 import com.example.kinofan.ui.viewModel.FilmsViewModel

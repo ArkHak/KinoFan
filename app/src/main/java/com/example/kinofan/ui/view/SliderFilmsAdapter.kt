@@ -1,10 +1,9 @@
-package com.example.kinofan
+package com.example.kinofan.ui.view
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.kinofan.ui.view.FilmsFragment
 
-class NumberAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+class SliderFilmsAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
     companion object {
         private const val ITEM_COUNT = 2
     }
@@ -15,7 +14,7 @@ class NumberAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
                 return FilmsFragment.newInstance(position)
             }
             1 -> {
-                return CommingSoonFilmsFragment.newInstance(position)
+                return ComingSoonFilmsFragment.newInstance(position)
             }
         }
         return FilmsFragment.newInstance(position)
