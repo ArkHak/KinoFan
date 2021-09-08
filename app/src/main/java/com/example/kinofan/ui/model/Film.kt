@@ -7,7 +7,7 @@ data class Film(
     val yearСreation: String = "????"
 )
 
-fun getPlayNowFilm(): List<Film> {
+fun getReleasedFilms(): List<Film> {
     return listOf(
         Film("Бесконечность", "фантастика, боевик, триллер", 7.5, "2021"),
         Film("Анатомия страсти", "драма", 8.2, "2005"),
@@ -22,7 +22,7 @@ fun getPlayNowFilm(): List<Film> {
     )
 }
 
-fun getComingSoonFilm(): List<Film> {
+fun getUpcomingFilms(): List<Film> {
     return listOf(
         Film("Дюна", "приключения, драма, фантастика", yearСreation = "2021"),
         Film("Веном 2", "фантастика, боевик", yearСreation = "2021"),

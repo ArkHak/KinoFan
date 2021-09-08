@@ -7,32 +7,23 @@ import com.example.kinofan.ui.model.Repository
 import com.example.kinofan.ui.model.RepositoryImpl
 import kotlin.random.Random
 
-class ReleasedFilmsViewModel : ViewModel() {
+class ReleasedFilmsViewModel(
+    private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData(),
+    private val repositoryImpl: Repository = RepositoryImpl()
+) : ViewModel() {
 
-    private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData()
-    private val repository: Repository = RepositoryImpl()
-    val livaData: LiveData<AppState> = liveDataToObserve
+    fun getLiveDate() = liveDataToObserve
 
-    fun getFilmFromLocalSource() = getDataFromLocalSource()
-    fun getFilmFromRemoteSource() = getDataFromRemoteSource()
+    fun getFilmsFromLocalSourceReleased() = getDataFromLocalSource()
+
+    fun getFilmsFromRemoteSourceReleased() = getDataFromLocalSource()
 
     private fun getDataFromLocalSource() {
         liveDataToObserve.value = AppState.Loading
         Thread {
-            Thread.sleep(3000)
-            liveDataToObserve.postValue(AppState.Success(repository.getFilmFromLocalStorage()))
-        }.start()
-    }
-
-    private fun getDataFromRemoteSource(){
-        liveDataToObserve.value = AppState.Loading
-        Thread {
-            Thread.sleep(3000)
-            if (Random.nextBoolean()) {
-                liveDataToObserve.postValue(AppState.Success(repository.getFilmFromServer()))
-            } else {
-                liveDataToObserve.postValue(AppState.Error(Exception("Нет интернета")))
-            }
+            Thread.sleep(1000)
+            liveDataToObserve
+                .postValue(AppState.Success(repositoryImpl.getFilmFromLocalStorageReleased()))
         }.start()
     }
 }
