@@ -17,7 +17,6 @@ class MainSliderFilmsFragment : Fragment() {
     private var _binding: FragmentMainSliderFilmsBinding? = null
     private val binding get() = _binding!!
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

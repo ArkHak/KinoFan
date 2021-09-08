@@ -7,7 +7,7 @@ import com.example.kinofan.ui.model.Repository
 import com.example.kinofan.ui.model.RepositoryImpl
 import kotlin.random.Random
 
-class FilmsViewModel : ViewModel() {
+class ReleasedFilmsViewModel : ViewModel() {
 
     private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData()
     private val repository: Repository = RepositoryImpl()

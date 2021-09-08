@@ -11,13 +11,13 @@ class SliderFilmsAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
     override fun createFragment(position: Int): Fragment {
         when (position) {
             0 -> {
-                return FilmsFragment.newInstance(position)
+                return ReleasedFilmsFragment.newInstance(position)
             }
             1 -> {
-                return ComingSoonFilmsFragment.newInstance(position)
+                return UpcomingFilmsFragment.newInstance(position)
             }
         }
-        return FilmsFragment.newInstance(position)
+        return ReleasedFilmsFragment.newInstance(position)
     }
 
     override fun getItemCount(): Int {

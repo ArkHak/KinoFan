@@ -8,17 +8,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.kinofan.R
-import com.example.kinofan.databinding.FilmsFragmentBinding
-import com.example.kinofan.ui.viewModel.FilmsViewModel
+import com.example.kinofan.databinding.ReleasedFilmsFragmentBinding
+import com.example.kinofan.ui.viewModel.ReleasedFilmsViewModel
 import com.example.kinofan.ui.viewModel.AppState
 import com.google.android.material.snackbar.Snackbar
 
-class FilmsFragment : Fragment() {
+class ReleasedFilmsFragment : Fragment() {
 
     companion object {
         private const val ARG_COUNT = "param2"
-        fun newInstance(counter: Int?): FilmsFragment {
-            val fragment = FilmsFragment()
+        fun newInstance(counter: Int?): ReleasedFilmsFragment {
+            val fragment = ReleasedFilmsFragment()
             val args = Bundle()
             args.putInt(ARG_COUNT, counter!!)
             fragment.arguments = args
@@ -26,27 +26,27 @@ class FilmsFragment : Fragment() {
         }
     }
 
-    private lateinit var viewModel: FilmsViewModel
-    private var _binding: FilmsFragmentBinding? = null
+    private lateinit var viewModelReleased: ReleasedFilmsViewModel
+    private var _binding: ReleasedFilmsFragmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = inflater.inflate(R.layout.films_fragment, container, false)
-        _binding = FilmsFragmentBinding.bind(view)
+        val view = inflater.inflate(R.layout.released_films_fragment, container, false)
+        _binding = ReleasedFilmsFragmentBinding.bind(view)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(FilmsViewModel::class.java)
-        viewModel.livaData.observe(viewLifecycleOwner, { state ->
+        viewModelReleased = ViewModelProvider(this).get(ReleasedFilmsViewModel::class.java)
+        viewModelReleased.livaData.observe(viewLifecycleOwner, { state ->
             renderData(state)
         })
 
-        viewModel.getFilmFromLocalSource()
+        viewModelReleased.getFilmFromLocalSource()
 
         initBtn()
     }
@@ -66,7 +66,7 @@ class FilmsFragment : Fragment() {
                 binding.loadingLayout.visibility = View.GONE
                 Snackbar
                     .make(binding.filmsView, "Error: ${state.error}", Snackbar.LENGTH_INDEFINITE)
-                    .setAction("Reload") { viewModel.getFilmFromLocalSource() }
+                    .setAction("Reload") { viewModelReleased.getFilmFromLocalSource() }
                     .show()
             }
         }
@@ -74,7 +74,7 @@ class FilmsFragment : Fragment() {
 
     private fun initBtn() {
         binding.btnDataUpdate.setOnClickListener {
-            viewModel.getFilmFromRemoteSource()
+            viewModelReleased.getFilmFromRemoteSource()
         }
     }
 

@@ -7,32 +7,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.kinofan.R
-import com.example.kinofan.databinding.FavoriteFragmentBinding
-import com.example.kinofan.ui.viewModel.FavoriteViewModel
+import com.example.kinofan.databinding.RatingsFilmsFragmentBinding
+import com.example.kinofan.ui.viewModel.RatingsFilmsViewModel
 
-class FavoriteFragment : Fragment() {
+class RatingsFilmsFragment : Fragment() {
 
     companion object {
-        fun newInstance() = FavoriteFragment()
+        fun newInstance() = RatingsFilmsFragment()
     }
 
-    private var _binding: FavoriteFragmentBinding? = null
+    private var _binding: RatingsFilmsFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: FavoriteViewModel
+    private lateinit var filmsViewModel: RatingsFilmsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.favorite_fragment, container, false)
-        _binding = FavoriteFragmentBinding.bind(view)
+        val view = inflater.inflate(R.layout.ratings_films_fragment, container, false)
+        _binding = RatingsFilmsFragmentBinding.bind(view)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(FavoriteViewModel::class.java)
+        filmsViewModel = ViewModelProvider(this).get(RatingsFilmsViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

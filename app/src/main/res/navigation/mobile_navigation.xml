@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_favorites"
-        android:name="com.example.kinofan.ui.view.FavoriteFragment"
+        android:name="com.example.kinofan.ui.view.FavoriteFilmsFragment"
         android:label="Favorites"
-        tools:layout="@layout/favorite_fragment" />
+        tools:layout="@layout/favorite_films_fragment" />
 
     <fragment
         android:id="@+id/navigation_ratings"
-        android:name="com.example.kinofan.ui.view.RatingsFragment"
+        android:name="com.example.kinofan.ui.view.RatingsFilmsFragment"
         android:label="Ratings"
-        tools:layout="@layout/ratings_fragment" />
+        tools:layout="@layout/ratings_films_fragment" />
 </navigation>
