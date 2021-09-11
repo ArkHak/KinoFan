@@ -1,11 +1,15 @@
 package com.example.kinofan.ui.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Film(
     val title: String = "???",
     val genre: String = "???",
     val rating: Double = 0.0,
     val yearСreation: String = "????"
-)
+) : Parcelable
 
 fun getReleasedFilms(): List<Film> {
     return listOf(
