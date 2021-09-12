@@ -9,7 +9,7 @@
         android:id="@+id/navigation_films"
         android:name="com.example.kinofan.ui.view.MainSliderFilmsFragment"
         android:label="Films"
-        tools:layout="@layout/fragment_main_slider_films" >
+        tools:layout="@layout/fragment_main_slider_films">
         <action
             android:id="@+id/action_navigation_films_to_detailsFilmFragment"
             app:destination="@id/detailsFilmFragment"
@@ -28,6 +28,7 @@
         android:name="com.example.kinofan.ui.view.RatingsFilmsFragment"
         android:label="Ratings"
         tools:layout="@layout/ratings_films_fragment" />
+
     <fragment
         android:id="@+id/detailsFilmFragment"
         android:name="com.example.kinofan.ui.view.DetailsFilmFragment"
