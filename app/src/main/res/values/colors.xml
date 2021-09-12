@@ -8,4 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="loadingBackground">#302C2C</color>
+    <color name="primaryColor">#0D253F</color>
+    <color name="secondaryColor">#01B4E4</color>
+    <color name="tertiaryColor">#90CEA1</color>
 </resources>

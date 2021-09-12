@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.example.kinofan.R
 import com.example.kinofan.databinding.ReleasedFilmsFragmentBinding
 import com.example.kinofan.ui.model.Film
@@ -33,18 +34,12 @@ class ReleasedFilmsFragment : Fragment() {
     private lateinit var viewModelReleased: ReleasedFilmsViewModel
     private val adapter = ReleasedFilmsAdapter(object : OnItemViewClickListener {
         override fun onItemViewClick(film: Film) {
-            val manager = activity?.supportFragmentManager
-            if (manager != null) {
-                val bundle = Bundle()
-                bundle.putParcelable(DetailsFilmFragment.BUNDLE_EXTRA, film)
-                manager.beginTransaction()
-                    .replace(
-                        R.id.fragment_container_slider_films,
-                        DetailsFilmFragment.newInstance(bundle)
-                    )
-                    .addToBackStack("released_frgm")
-                    .commitAllowingStateLoss()
-            }
+            val bundle = Bundle()
+            bundle.putParcelable(DetailsFilmFragment.BUNDLE_EXTRA, film)
+            findNavController(requireParentFragment()).navigate(
+                R.id.action_navigation_films_to_detailsFilmFragment,
+                bundle
+            )
         }
 
     })
