@@ -1,17 +1,17 @@
 package com.example.kinofan.ui.view
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.kinofan.R
 import com.example.kinofan.databinding.ReleasedFilmsFragmentBinding
 import com.example.kinofan.ui.model.Film
+import com.example.kinofan.ui.viewModel.AppState
 import com.example.kinofan.ui.viewModel.ReleasedFilmsAdapter
 import com.example.kinofan.ui.viewModel.ReleasedFilmsViewModel
-import com.example.kinofan.ui.viewModel.AppState
 import com.google.android.material.snackbar.Snackbar
 
 class ReleasedFilmsFragment : Fragment() {
@@ -38,7 +38,10 @@ class ReleasedFilmsFragment : Fragment() {
                 val bundle = Bundle()
                 bundle.putParcelable(DetailsFilmFragment.BUNDLE_EXTRA, film)
                 manager.beginTransaction()
-                    .replace(R.id.films_fragment_container, DetailsFilmFragment.newInstance(bundle))
+                    .replace(
+                        R.id.fragment_container_slider_films,
+                        DetailsFilmFragment.newInstance(bundle)
+                    )
                     .addToBackStack("released_frgm")
                     .commitAllowingStateLoss()
             }
