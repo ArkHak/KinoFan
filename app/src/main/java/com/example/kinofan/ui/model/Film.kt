@@ -8,14 +8,15 @@ data class Film(
     val title: String = "???",
     val genre: String = "???",
     val rating: Double = 0.0,
-    val yearСreation: String = "????"
+    val yearСreation: String = "????",
+    val like: Boolean = false
 ) : Parcelable
 
 fun getReleasedFilms(): List<Film> {
     return listOf(
         Film("Бесконечность", "фантастика, боевик, триллер", 7.5, "2021"),
         Film("Анатомия страсти", "драма", 8.2, "2005"),
-        Film("Шан-Чи и легенда десяти колец", "боевик, приключения, фэнтези", 8.0, "2021"),
+        Film("Шан-Чи и легенда десяти колец", "боевик, приключения, фэнтези", 8.0, "2021", true),
         Film("Не дыши 2", "триллер, ужасы", 7.7, "2021"),
         Film(
             "Отряд самоубийц: Миссия навылет",

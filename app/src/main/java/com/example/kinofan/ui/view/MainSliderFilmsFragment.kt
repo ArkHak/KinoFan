@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import com.example.kinofan.R
 import com.example.kinofan.databinding.FragmentMainSliderFilmsBinding
+import com.example.kinofan.ui.viewModel.SliderFilmsAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MainSliderFilmsFragment : Fragment() {

@@ -1,10 +1,10 @@
 package com.example.kinofan.ui.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.kinofan.R
 import com.example.kinofan.databinding.FragmentDetailsFilmBinding
 import com.example.kinofan.ui.model.Film
@@ -32,6 +32,10 @@ class DetailsFilmFragment : Fragment() {
             binding.filmGenre.text = film.genre
             binding.filmRating.text = film.rating.toString()
             binding.filmYearCreated.text = film.yearСreation
+            if (film.like) {
+                binding.icLike.setImageResource(R.drawable.ic_like_on_64)
+            }
+
         }
     }
 
