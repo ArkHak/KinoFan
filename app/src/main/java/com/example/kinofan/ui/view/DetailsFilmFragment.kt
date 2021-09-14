@@ -9,12 +9,10 @@ import com.example.kinofan.R
 import com.example.kinofan.databinding.FragmentDetailsFilmBinding
 import com.example.kinofan.ui.model.Film
 
-
 class DetailsFilmFragment : Fragment() {
 
     private var _binding: FragmentDetailsFilmBinding? = null
     private val binding get() = _binding!!
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,16 +24,16 @@ class DetailsFilmFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val film = arguments?.getParcelable<Film>(BUNDLE_EXTRA)
-        if (film != null) {
-            binding.filmTitle.text = film.title
-            binding.filmGenre.text = film.genre
-            binding.filmRating.text = film.rating.toString()
-            binding.filmYearCreated.text = film.yearСreation
-            if (film.like) {
-                binding.icLike.setImageResource(R.drawable.ic_like_on_64)
+        arguments?.getParcelable<Film>(BUNDLE_EXTRA)?.let { film ->
+            film.also {
+                binding.filmTitle.text = film.title
+                binding.filmGenre.text = film.genre
+                binding.filmRating.text = film.rating.toString()
+                binding.filmYearCreated.text = film.yearСreation
+                if (film.like) {
+                    binding.icLike.setImageResource(R.drawable.ic_like_on_64)
+                }
             }
-
         }
     }
 

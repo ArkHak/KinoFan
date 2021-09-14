@@ -31,7 +31,10 @@ class ReleasedFilmsFragment : Fragment() {
     private var _binding: ReleasedFilmsFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModelReleased: ReleasedFilmsViewModel
+    private val viewModelReleased: ReleasedFilmsViewModel by lazy {
+        ViewModelProvider(this).get(ReleasedFilmsViewModel::class.java)
+    }
+
     private val adapter = ReleasedFilmsAdapter(object : OnItemViewClickListener {
         override fun onItemViewClick(film: Film) {
             val bundle = Bundle()
@@ -55,7 +58,6 @@ class ReleasedFilmsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.releasedFilmsRecyclerView.adapter = adapter
-        viewModelReleased = ViewModelProvider(this).get(ReleasedFilmsViewModel::class.java)
         viewModelReleased.getLiveDate().observe(viewLifecycleOwner, { state ->
             renderData(state)
         })
@@ -71,17 +73,23 @@ class ReleasedFilmsFragment : Fragment() {
             }
             is AppState.Error -> {
                 binding.loadingLayout.visibility = View.GONE
-                Snackbar
-                    .make(
-                        binding.filmsFragmentContainer,
-                        "Error: ${state.error}",
-                        Snackbar.LENGTH_INDEFINITE
-                    )
-                    .setAction("Reload") { viewModelReleased.getFilmsFromLocalSourceReleased() }
-                    .show()
+                binding.filmsFragmentContainer.showSnackBar(
+                    getString(R.string.error),
+                    getString(R.string.reload),
+                    { viewModelReleased.getFilmsFromLocalSourceReleased() })
             }
         }
     }
+
+    private fun View.showSnackBar(
+        text: String,
+        actionText: String,
+        action: (View) -> Unit,
+        length: Int = Snackbar.LENGTH_INDEFINITE
+    ) {
+        Snackbar.make(this, text, length).setAction(actionText, action).show()
+    }
+
 
     interface OnItemViewClickListener {
         fun onItemViewClick(film: Film)

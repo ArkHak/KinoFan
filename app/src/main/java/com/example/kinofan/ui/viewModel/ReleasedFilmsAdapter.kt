@@ -43,8 +43,8 @@ class ReleasedFilmsAdapter(
         private val binding: FilmItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(film: Film) {
-            itemView.setOnClickListener {
-                onItemViewClickListener?.onItemViewClick(film)
+            itemView.apply {
+                setOnClickListener { onItemViewClickListener?.onItemViewClick(film) }
             }
             with(binding) {
                 filmTitle.text = film.title
