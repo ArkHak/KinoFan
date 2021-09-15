@@ -1,7 +1,7 @@
 package com.example.kinofan.ui.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.kinofan.R
@@ -30,7 +30,5 @@ class MainActivity : AppCompatActivity() {
 //        setupActionBarWithNavController(navController, appBarConfiguration)
 
         navView.setupWithNavController(navController)
-
-
     }
 }
