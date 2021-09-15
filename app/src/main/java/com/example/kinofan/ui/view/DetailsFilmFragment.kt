@@ -26,12 +26,14 @@ class DetailsFilmFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         arguments?.getParcelable<Film>(BUNDLE_EXTRA)?.let { film ->
             film.also {
-                binding.filmTitle.text = film.title
-                binding.filmGenre.text = film.genre
-                binding.filmRating.text = film.rating.toString()
-                binding.filmYearCreated.text = film.yearСreation
-                if (film.like) {
-                    binding.icLike.setImageResource(R.drawable.ic_like_on_64)
+                with(binding) {
+                    filmTitle.text = film.title
+                    filmGenre.text = film.genre
+                    filmRating.text = film.rating.toString()
+                    filmYearCreated.text = film.yearСreation
+                    if (film.like) {
+                        icLike.setImageResource(R.drawable.ic_like_on_64)
+                    }
                 }
             }
         }

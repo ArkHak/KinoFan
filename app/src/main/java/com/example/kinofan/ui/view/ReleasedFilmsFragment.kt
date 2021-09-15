@@ -72,11 +72,13 @@ class ReleasedFilmsFragment : Fragment() {
                 adapter.setFilms(state.filmsData)
             }
             is AppState.Error -> {
-                binding.loadingLayout.visibility = View.GONE
-                binding.filmsFragmentContainer.showSnackBar(
-                    getString(R.string.error),
-                    getString(R.string.reload),
-                    { viewModelReleased.getFilmsFromLocalSourceReleased() })
+                with(binding) {
+                    loadingLayout.visibility = View.GONE
+                    filmsFragmentContainer.showSnackBar(
+                        getString(R.string.error),
+                        getString(R.string.reload),
+                        { viewModelReleased.getFilmsFromLocalSourceReleased() })
+                }
             }
         }
     }
