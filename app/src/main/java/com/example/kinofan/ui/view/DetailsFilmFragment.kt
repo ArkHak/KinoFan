@@ -29,7 +29,7 @@ class DetailsFilmFragment : Fragment() {
                 with(binding) {
                     filmTitle.text = film.title
                     filmGenre.text = film.genre
-                    filmRating.text = film.rating.toString()
+                    filmRating.text = film.voteAverage.toString()
                     filmYearCreated.text = film.yearСreation
                     if (film.like) {
                         icLike.setImageResource(R.drawable.ic_like_on_64)

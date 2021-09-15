@@ -5,4 +5,8 @@ class RepositoryImpl : Repository {
 
     override fun getFilmFromLocalStorageReleased() = getReleasedFilms()
     override fun getFilmFromLocalStorageUpcoming() = getUpcomingFilms()
+
+//    override fun getListFilmFromServerRatings() {
+//
+//    }
 }

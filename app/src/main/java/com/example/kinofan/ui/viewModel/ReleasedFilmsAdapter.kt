@@ -38,7 +38,6 @@ class ReleasedFilmsAdapter(
         onItemViewClickListener = null
     }
 
-
     inner class ReleasedFilmsViewHolder(
         private val binding: FilmItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -49,7 +48,7 @@ class ReleasedFilmsAdapter(
             with(binding) {
                 filmTitle.text = film.title
                 filmReleaseDate.text = film.yearСreation
-                filmPopularity.text = film.rating.toString()
+                filmPopularity.text = film.voteAverage.toString()
                 if (film.like) {
                     icLike.setImageResource(R.drawable.ic_like_on_64)
                 }
