@@ -3,6 +3,7 @@ package com.example.kinofan.ui.model
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.example.kinofan.BuildConfig
 import com.google.gson.Gson
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -20,7 +21,7 @@ class FilmLoader(
 
         Thread {
             val uri =
-                URL("https://api.themoviedb.org/3/movie/$id?api_key=5a4d3f5b8db540f6abf906e6fdf2fdb9&language=ru-RU")
+                URL("https://api.themoviedb.org/3/movie/$id?api_key=${BuildConfig.TMDB_API_KEY}&language=ru-RU")
 
             var urlConnection: HttpsURLConnection? = null
 
