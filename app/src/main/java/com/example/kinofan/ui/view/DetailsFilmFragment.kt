@@ -1,13 +1,17 @@
 package com.example.kinofan.ui.view
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import com.example.kinofan.R
 import com.example.kinofan.databinding.FragmentDetailsFilmBinding
 import com.example.kinofan.ui.model.Film
+import com.example.kinofan.ui.model.FilmDTO
+import com.example.kinofan.ui.model.FilmLoader
 
 class DetailsFilmFragment : Fragment() {
 
@@ -22,19 +26,39 @@ class DetailsFilmFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.getParcelable<Film>(BUNDLE_EXTRA)?.let { film ->
-            film.also {
-                with(binding) {
-                    filmTitle.text = film.title
-                    filmGenre.text = film.genre
-                    filmRating.text = film.voteAverage.toString()
-                    filmYearCreated.text = film.yearСreation
-                    if (film.like) {
-                        icLike.setImageResource(R.drawable.ic_like_on_64)
+
+            FilmLoader(film.id, object : FilmLoader.FilmLoaderListener {
+                override fun onLoaded(filmDTO: FilmDTO) {
+                    requireActivity().runOnUiThread {
+                        displayFilm(filmDTO)
                     }
                 }
+
+                override fun onFailed(throwable: Throwable) {
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(
+                            requireContext(),
+                            throwable.localizedMessage,
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+
+            }).goToInternet()
+        }
+    }
+
+    private fun displayFilm(film: FilmDTO) {
+        film.also {
+            with(binding) {
+                filmTitle.text = film.title
+                filmGenre.text = film.genre
+                filmRating.text = film.vote_average.toString()
+                filmYearCreated.text = film.year_creation
             }
         }
     }
