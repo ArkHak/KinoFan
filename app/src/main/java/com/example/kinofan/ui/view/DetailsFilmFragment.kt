@@ -59,6 +59,11 @@ class DetailsFilmFragment : Fragment() {
                 filmGenre.text = film.genre
                 filmRating.text = film.vote_average.toString()
                 filmYearCreated.text = film.year_creation
+                filmOriginalTitle.text = film.original_title
+                filmRuntime.text = film.runtime.toString()
+                filmReleaseDate.text = film.release_date
+                filmBudget.text = film.budget.toString()
+                filmOverview.text = film.overview
             }
         }
     }
