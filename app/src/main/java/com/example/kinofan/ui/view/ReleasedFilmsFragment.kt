@@ -40,7 +40,7 @@ class ReleasedFilmsFragment : Fragment() {
             val bundle = Bundle()
             bundle.putParcelable(DetailsFilmFragment.BUNDLE_EXTRA, film)
             findNavController(requireParentFragment()).navigate(
-                R.id.action_navigation_films_to_detailsFilmFragment,
+                R.id.action_navigation_films_to_singleMovieFragment,
                 bundle
             )
         }

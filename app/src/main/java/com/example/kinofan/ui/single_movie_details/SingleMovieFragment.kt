@@ -16,6 +16,7 @@ import com.example.kinofan.ui.data.api.TheMovieDBClient
 import com.example.kinofan.ui.data.api.TheMovieDBInterface
 import com.example.kinofan.ui.data.repository.NetworkState
 import com.example.kinofan.ui.data.vo.MovieDetails
+import com.example.kinofan.ui.model.Film
 import kotlinx.android.synthetic.main.fragment_single_movie.*
 import java.text.NumberFormat
 import java.util.*
@@ -39,28 +40,29 @@ class SingleMovieFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        arguments?.getParcelable<Film>(SingleMovieFragment.BUNDLE_EXTRA)?.let { film ->
+            val movieId = film.id.toInt()
 
-        val movieId = 501
+            val apiService: TheMovieDBInterface = TheMovieDBClient.getClient()
+            movieRepository = MovieDetailsRepository(apiService)
 
+            viewModel = getViewModel(movieId)
 
-        val apiService: TheMovieDBInterface = TheMovieDBClient.getClient()
-        movieRepository = MovieDetailsRepository(apiService)
+            viewModel.movieDetails.observe(viewLifecycleOwner, Observer {
+                bindUI(it)
+            })
 
-        viewModel = getViewModel(movieId)
+            viewModel.networkState.observe(viewLifecycleOwner, Observer {
+                progress_bar.visibility =
+                    if (it == NetworkState.LOADING) View.VISIBLE else View.GONE
+                txt_error.visibility = if (it == NetworkState.ERROR) View.VISIBLE else View.GONE
 
-        viewModel.movieDetails.observe(viewLifecycleOwner, Observer {
-            bindUI(it)
-        })
-
-        viewModel.networkState.observe(viewLifecycleOwner, Observer {
-            progress_bar.visibility = if (it == NetworkState.LOADING) View.VISIBLE else View.GONE
-            txt_error.visibility = if (it == NetworkState.ERROR) View.VISIBLE else View.GONE
-
-        })
+            })
+        }
     }
 
     @SuppressLint("SetTextI18n")
-    fun bindUI(it: MovieDetails){
+    fun bindUI(it: MovieDetails) {
         movie_title.text = it.title
         movie_tagline.text = it.tagline
         movie_release_date.text = it.releaseDate
@@ -87,6 +89,16 @@ class SingleMovieFragment : Fragment() {
                 return SingleMovieViewModel(movieRepository, movieId) as T
             }
         }).get(SingleMovieViewModel::class.java)
+    }
+
+    companion object {
+        const val BUNDLE_EXTRA = "FILM"
+
+        fun newInstance(bundle: Bundle): SingleMovieFragment {
+            val fragment = SingleMovieFragment()
+            fragment.arguments = bundle
+            return fragment
+        }
     }
 
 
