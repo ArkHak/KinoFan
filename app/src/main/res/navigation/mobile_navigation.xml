@@ -11,10 +11,17 @@
         android:label="Films"
         tools:layout="@layout/fragment_main_slider_films">
         <action
-            android:id="@+id/action_navigation_films_to_detailsFilmFragment"
-            app:destination="@id/detailsFilmFragment"
+            android:id="@+id/action_navigation_films_to_singleMovieFragment"
+            app:destination="@id/singleMovieFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+
+
+        <!--        <action-->
+        <!--            android:id="@+id/action_navigation_films_to_detailsFilmFragment"-->
+        <!--            app:destination="@id/detailsFilmFragment"-->
+        <!--            app:enterAnim="@anim/nav_default_enter_anim"-->
+        <!--            app:exitAnim="@anim/nav_default_exit_anim" />-->
     </fragment>
 
     <fragment
@@ -34,4 +41,9 @@
         android:name="com.example.kinofan.ui.view.DetailsFilmFragment"
         android:label="fragment_details_film"
         tools:layout="@layout/fragment_details_film" />
+    <fragment
+        android:id="@+id/singleMovieFragment"
+        android:name="com.example.kinofan.ui.single_movie_details.SingleMovieFragment"
+        android:label="fragment_single_movie"
+        tools:layout="@layout/fragment_single_movie" />
 </navigation>
