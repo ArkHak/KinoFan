@@ -1,10 +1,10 @@
 package com.example.kinofan.ui.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.kinofan.R
 import com.example.kinofan.databinding.FragmentMainSliderFilmsBinding
@@ -41,9 +41,14 @@ class MainSliderFilmsFragment : Fragment() {
     private fun tabNames(position: Int): String? {
         when (position) {
             0 -> {
-                return getString(R.string.watch_now_film)
+                return getString(R.string.popular_films)
             }
-            1 -> return getString(R.string.coming_soon_film)
+
+            1 -> {
+                return getString(R.string.play_now_films)
+            }
+
+            2 -> return getString(R.string.coming_soon_film)
         }
         return null
     }
