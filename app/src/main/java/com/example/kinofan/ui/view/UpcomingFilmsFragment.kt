@@ -13,7 +13,7 @@ import com.example.kinofan.databinding.UpcomingFilmsFragmentBinding
 class UpcomingFilmsFragment : Fragment() {
 
     companion object {
-        private const val ARG_COUNT = "param2"
+        private const val ARG_COUNT = "param3"
         fun newInstance(counter: Int?): UpcomingFilmsFragment {
             val fragment = UpcomingFilmsFragment()
             val args = Bundle()

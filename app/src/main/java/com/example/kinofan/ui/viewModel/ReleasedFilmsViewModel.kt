@@ -21,7 +21,6 @@ class ReleasedFilmsViewModel(
     private fun getDataFromLocalSource() {
         liveDataToObserve.value = AppState.Loading
         Thread {
-            Thread.sleep(1000)
             liveDataToObserve
                 .postValue(AppState.Success(repositoryImpl.getFilmFromLocalStorageReleased()))
         }.start()

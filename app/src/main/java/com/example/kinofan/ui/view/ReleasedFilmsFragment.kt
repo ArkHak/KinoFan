@@ -18,7 +18,7 @@ import com.google.android.material.snackbar.Snackbar
 class ReleasedFilmsFragment : Fragment() {
 
     companion object {
-        private const val ARG_COUNT = "param1"
+        private const val ARG_COUNT = "param2"
         fun newInstance(counter: Int?): ReleasedFilmsFragment {
             val fragment = ReleasedFilmsFragment()
             val args = Bundle()
@@ -40,7 +40,7 @@ class ReleasedFilmsFragment : Fragment() {
             val bundle = Bundle()
             bundle.putParcelable(DetailsFilmFragment.BUNDLE_EXTRA, film)
             findNavController(requireParentFragment()).navigate(
-                R.id.action_navigation_films_to_detailsFilmFragment,
+                R.id.action_navigation_films_to_singleMovieFragment,
                 bundle
             )
         }

@@ -5,30 +5,53 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Film(
+    val id: Long = 0,
     val title: String = "???",
+    val original_title: String = "???",
     val genre: String = "???",
-    val rating: Double = 0.0,
-    val yearСreation: String = "????",
-    val like: Boolean = false
+    val vote_average: Double = 0.0,
+    val year_creation: String = "????",
+    val runtime: Int = 0,
+    val like: Boolean = false,
+    val release_date: String = "???",
+    val overview: String = "???",
+    val budget: Long = 0,
+    val revenue: Long = 0,
+    val poster: String = "???"
+
 ) : Parcelable
 
 fun getReleasedFilms() = listOf(
-    Film("Бесконечность", "фантастика, боевик, триллер", 7.5, "2021"),
-    Film("Анатомия страсти", "драма", 8.2, "2005"),
-    Film("Шан-Чи и легенда десяти колец", "боевик, приключения, фэнтези", 8.0, "2021", true),
-    Film("Не дыши 2", "триллер, ужасы", 7.7, "2021"),
     Film(
-        "Отряд самоубийц: Миссия навылет",
+        581726,
+        "Бесконечность",
+        "фантастика, боевик, триллер",
+        vote_average = 7.5,
+        year_creation = "2021"
+    ),
+    Film(1416, "Анатомия страсти", "драма", vote_average = 8.2, year_creation = "2005"),
+    Film(
+        566525, "Шан-Чи и легенда десяти колец",
+        "боевик, приключения, фэнтези",
+        vote_average = 8.0,
+        year_creation = "2021",
+        like = true
+    ),
+    Film(
+        482373, "Не дыши 2", "триллер, ужасы", vote_average = 7.7, year_creation = "2021"
+    ),
+    Film(
+        436969, "Отряд самоубийц: Миссия навылет",
         "боевик, приключения, фэнтези, комедия",
-        8.0,
-        "2021"
+        vote_average = 8.0,
+        year_creation = "2021"
     )
 )
 
 fun getUpcomingFilms() = listOf(
-    Film("Дюна", "приключения, драма, фантастика", yearСreation = "2021"),
-    Film("Веном 2", "фантастика, боевик", yearСreation = "2021"),
-    Film("Не время умирать", "приключения, боевик, триллер", yearСreation = "2021"),
-    Film("Холодный расчет", "драма, триллер, боевик", yearСreation = "2021"),
-    Film("Семейка Аддамс: Горящий тур", "мультфильм, комедия, семейный", yearСreation = "2021"),
+    Film(6, "Дюна", "приключения, драма, фантастика", year_creation = "2021"),
+    Film(7, "Веном 2", "фантастика, боевик", year_creation = "2021"),
+    Film(8, "Не время умирать", "приключения, боевик, триллер", year_creation = "2021"),
+    Film(9, "Холодный расчет", "драма, триллер, боевик", year_creation = "2021"),
+    Film(10, "Семейка Аддамс: Горящий тур", "мультфильм, комедия, семейный", year_creation = "2021"),
 )

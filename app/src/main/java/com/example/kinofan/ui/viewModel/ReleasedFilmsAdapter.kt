@@ -1,5 +1,6 @@
 package com.example.kinofan.ui.viewModel
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +17,7 @@ class ReleasedFilmsAdapter(
 
     private var filmsData: List<Film> = listOf()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setFilms(data: List<Film>) {
         filmsData = data
         notifyDataSetChanged()
@@ -37,10 +39,9 @@ class ReleasedFilmsAdapter(
     fun removeListener() {
         onItemViewClickListener = null
     }
-
-
     inner class ReleasedFilmsViewHolder(
-        private val binding: FilmItemBinding
+        private val binding:
+       FilmItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(film: Film) {
             itemView.apply {
@@ -48,8 +49,8 @@ class ReleasedFilmsAdapter(
             }
             with(binding) {
                 filmTitle.text = film.title
-                filmReleaseDate.text = film.yearСreation
-                filmPopularity.text = film.rating.toString()
+                filmReleaseDate.text = film.year_creation
+                filmPopularity.text = film.vote_average.toString()
                 if (film.like) {
                     icLike.setImageResource(R.drawable.ic_like_on_64)
                 }
